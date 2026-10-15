@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meekimobile — WebGL Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Meeki<span>Mobile</span></div>
+    <nav>
+      <a href="#demo">Demo</a>
+      <a href="#about">About</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Real-time 3D in the browser</h1>
+      <p>A tiny home page demonstrating raw WebGL — no frameworks, no libraries, just shaders and triangles.</p>
+      <a class="cta" href="#demo">See the demo</a>
+    </section>
+
+    <section id="demo" class="demo">
+      <div class="canvas-wrap">
+        <canvas id="glcanvas"></canvas>
+        <p id="fallback" class="fallback" hidden>WebGL is not supported by this browser.</p>
+      </div>
+      <div class="demo-controls">
+        <label>
+          <input type="checkbox" id="spin" checked>
+          Auto-rotate
+        </label>
+        <label>
+          Speed
+          <input type="range" id="speed" min="0" max="200" value="60">
+        </label>
+        <p class="hint">Drag the cube to rotate it manually.</p>
+      </div>
+    </section>
+
+    <section id="about" class="cards">
+      <article>
+        <h2>Raw WebGL</h2>
+        <p>The cube is drawn with a hand-written vertex and fragment shader, a depth buffer and per-vertex colors — nothing else.</p>
+      </article>
+      <article>
+        <h2>Interactive</h2>
+        <p>Pointer drag rotates the scene, and the controls change the animation speed live.</p>
+      </article>
+      <article>
+        <h2>Lightweight</h2>
+        <p>No build step and no dependencies. Open <code>index.html</code> and it just runs.</p>
+      </article>
+    </section>
+
+    <section id="how" class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>A <code>&lt;canvas&gt;</code> element requests a WebGL context.</li>
+        <li>Shaders compile from GLSL source strings in JavaScript.</li>
+        <li>Vertices are uploaded to a buffer once, then drawn each frame.</li>
+        <li>A rotation matrix from time + drag input animates every frame.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Meekimobile · Built with WebGL</p>
+  </footer>
+
+  <script src="webgl.js"></script>
+</body>
+</html>
